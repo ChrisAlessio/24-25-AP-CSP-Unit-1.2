@@ -15,7 +15,7 @@ timer = 30
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
-colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+colors = ["red", "orange", "yellow", "green", "blue", "purple", "black", "white",]
 sizes = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
 #-----initialize turtle-----
 spot = trtl.Turtle()
