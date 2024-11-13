@@ -77,11 +77,14 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
         index = index + 1
 
     # TODO 10: insert new player and score
+    leader_names.insert(index, player_name)
+    leader_scores.insert(index, player_score)
 
     # TODO 11: keep both lists at 5 elements only (top 5 players)
+    leader_names.pop(5)
+    leader_scores.pop(5)
 
     # TODO 12: store the latest leaderboard back in the file
-    '''
     leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
 
     # TODO 13 loop through all the leaderboard elements and write them to the the file
@@ -89,7 +92,6 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
       leaderboard_file.write(leader_names[index] + "," + str(leader_scores[index]) + "\n")
 
     leaderboard_file.close()
-     '''
 
 
 # draw leaderboard and display a message to player
@@ -118,10 +120,10 @@ def draw_leaderboard(high_scorer, leader_names, leader_scores, turtle_object, pl
     turtle_object.pendown()
 
     # TODO 14: display message about player making/not making leaderboard
-    '''
-      turtle_object.write("Congratulations!\nYou made the leaderboard!", font=font_setup)
-      turtle_object.write("Sorry!\nYou didn't make the leaderboard.\nMaybe next time!", font=font_setup)
-    '''
+    if player_score >= leader_scores[4]:
+        turtle_object.write("Congratulations!\nYou made the leaderboard!", font=font_setup)
+    else:
+        turtle_object.write("Sorry!\nYou didn't make the leaderboard.\nMaybe next time!", font=font_setup)
 
     # move turtle to a new line
     turtle_object.penup()
@@ -129,8 +131,9 @@ def draw_leaderboard(high_scorer, leader_names, leader_scores, turtle_object, pl
     turtle_object.pendown()
 
     # TODO 15: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
-    '''
+    if player_score >= gold_score:
       turtle_object.write("You earned a gold medal!", font=font_setup)
+    elif player_score >= silver_score and player_score <= gold_score:
       turtle_object.write("You earned a silver medal!", font=font_setup)
+    elif player_score >= bronze_score and player_score <= silver_score:
       turtle_object.write("You earned a bronze medal!", font=font_setup)
-    '''
