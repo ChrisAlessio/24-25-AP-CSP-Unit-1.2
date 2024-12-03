@@ -1,10 +1,13 @@
 import turtle as trtl
+import random as rand
 
 #Initialize variable
 wn = trtl.Screen()
 maze_painter = trtl.Turtle()
 length = 35
 path_width = 30
+door = rand.randint(path_width*2, length - path_width*2)
+barrier = rand.randint(path_width*2, length - path_width*2)
 
 # Setup turtle
 maze_painter.speed(0)
