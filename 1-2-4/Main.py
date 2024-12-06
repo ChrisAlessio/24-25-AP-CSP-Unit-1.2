@@ -19,22 +19,23 @@ maze_painter.pensize(5)
 # Increment length
 # Repeat
 def draw_barrier():
-    barrier = rand.randint(path_width * 2, (wall_len + path_width))
     maze_painter.right(90)
     maze_painter.forward(path_width)
     maze_painter.backward(path_width)
     maze_painter.left(90)
-    maze_painter.forward(barrier - path_width)
 
 for wall in range(21):
-    door = rand.randint(path_width * 2, (wall_len + path_width * 2))
-    maze_painter.forward(door)
+    gap = rand.randint(0, wall_len - path_width)
+    barrier = 0
+    maze_painter.forward(gap)
     maze_painter.penup()
     maze_painter.forward(path_width)
     maze_painter.pendown()
     if(wall > 5):
+        barrier = rand.randint(0, wall_len - gap - path_width)
+        maze_painter.forward(barrier)
         draw_barrier()
-    maze_painter.forward(wall_len - barrier)
+    maze_painter.forward(wall_len - gap - path_width - barrier)
     maze_painter.left(90)
     wall_len  += 15
 
